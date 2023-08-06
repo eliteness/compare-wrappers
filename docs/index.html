@@ -1,5 +1,5 @@
-<html>
-<!doctype html><html><meta charset="UTF-8">
+<!doctype html>
+<meta charset="UTF-8">
 <head>
 <title>Measure Liquidity of Liquid Wrappers - eliteness.network/wrapper-liquidity</title>
 <meta name="description" content="Measure Liquidity of Liquid Wrappers - eliteness.network/wrapper-liquidity : Powered by Guru Network 🦾,🚀">
@@ -92,6 +92,11 @@ html{
   margin:4px 4px 4px 0;
 }
 
+.subhead-small {
+  font-size:0.8em;
+  color:#999;
+}
+
 @media screen and (max-width: 700px){
   .box{
     width: 70%;
@@ -112,26 +117,32 @@ html{
 table {
   border-collapse: collapse;
 }
+table tbody tr td a {
+	text-decoration:none;
+	color:initial;
+}
 
-table thead tr tH a {
+table thead tr th a {
 	color: #321;
 	text-decoration: 1px dashed #444 underline;
 }
-table tbody tr td:first-child {
-	text-align:left;
-	width:250px;
-	min-width:250px;
-}
 table thead  tr th {
 	text-align:center;
-	font-size:1.5em;
+	font-size:1em;
 }
-table tr td {
+table thead tr th,
+table tbody tr td{
 	padding:10px;
-	width: 200px;
+	width: 50px;
 	text-align:center;
-	min-width: 200px;
+	min-width: 50px;
 }
+table tr th:first-child {
+	text-align:left;
+	width:150px;
+	min-width:150px;
+}
+
 .view {
   margin: auto;
   width: 100%;
@@ -178,13 +189,16 @@ table tr td {
 }
 
 @media(min-width:641px) {
+  /*
   table tbody tr td:first-child {
     position: -webkit-sticky;
     position: sticky;
     left: 0px;
     background: linear-gradient(to right, #d0f5f2, #90F7EC)
   }
+  */
 }
+
 
 
 </style>
@@ -214,7 +228,71 @@ table tr td {
 
 	<div>
 		<div>
-			<h2>Thena.fi : veTHE Wrappers</h2>
+			<h2>
+				<img src="https://ftm.guru/icons/the.png" style="vertical-align:bottom;height:32px;">
+				veTHE (Thena.fi)
+			</h2>
+			<div style="overflow:auto">
+				<table align="center" id="">
+					<thead>
+						<tr>
+							<th>Liquid Wrapper</th>
+							<th>1</th>
+							<th>10</th>
+							<th>100</th>
+							<th>1000</th>
+							<th>10,000</th>
+							<th>100,000</th>
+							<th>1,000,000</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="tb-vethe-ethena">
+							<td>
+								<img src="https://ftm.guru/icons/ethena.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://eliteness.network/ethena" target="_blank">eTHENA</a>
+								<br><span class="subhead-small"><a href="https://eliteness.network/ethena" target="_blank">Guru Network</a></span>
+							</td>
+						<tr>
+						<tr id="tb-vethe-livethe">
+							<td>
+								<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://www.liquiddriver.finance/livethe" target="_blank">liveTHE</a>
+								<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Liquid Driver</a></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<br>
+			<canvas id="ch_s2" style="width:80%;height:50vh;max-height:500px"></canvas>
+
+			<svg style="display:none" version="1.0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="200px" width="80vw" viewBox="0 0 240 100" class="chart">
+
+  				<polyline id="chart-vethe-livethe" fill="none" stroke="#0074d9" stroke-width="1" points=""/>
+  				<polyline id="chart-vethe-ethena" fill="none" stroke="#ff74d9" stroke-width="1" points=""/>
+
+				<line x1="0" x2="0" y1="0" y2="100"></line>
+				<line x1="150" x2="150" y1="0" y2="100"></line>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="400" y="440" class="label-title">Year</text>
+
+				<text x="80" y="15">15</text>
+				<text x="80" y="131">10</text>
+				<text x="80" y="248">5</text>
+				<text x="80" y="373">0</text>
+				<text x="50" y="200" class="label-title">Price</text>
+
+
+			</svg>
+
+
+			<br>
+			<br>
 			How much can <input id="inp_vethe" placeholder="Amount of veTHE" value="100"> <b>veTHE</b> be sold instantly for?
 			<br>
 			<br>
@@ -261,8 +339,9 @@ Are we missing something interesting? Jump into our <a href="https://discord.gg/
 </div>
 </body>
 
-<script src="https://ftm.guru/ethers-5.2.umd.min.js">
-</script>
+<script src="https://ftm.guru/ethers-5.2.umd.min.js"></script>
+<script src="https://ftm.guru/chart.min.js" type="application/javascript"></script>
+<script src="https://ftm.guru/chartjs-adapter-date-fns.bundle.min.js" type="application/javascript"></script>
 
 
 <script>
@@ -272,7 +351,7 @@ STATE = {}
 ////////////////////////////////////////////////////////////////
 
 
-function $(_) {return document.getElementById(_);}
+function $(_) {console.log(_);return document.getElementById(_);}
 let provider= {};
 let signer= {};
 window.addEventListener('load',async function()
@@ -383,13 +462,140 @@ async function cleanStage() {
 }
 
 
+Chart.defaults.color="#345";
+function paint(el,da,na,la,hi,ld,fi) {
+
+	new Chart(el, {
+		type: "line",
+		data: {
+			labels: da[0].map(row => row.depth.toString()),
+			datasets: [
+          		{
+            		label: 'eTHENA',
+            		data: da[0].map(row => row.eTHENA),
+            		borderColor: '#d700d9'
+          		},
+          		{
+            		label: 'liveTHE',
+            		data: da[0].map(row => row.liveTHE),
+            		borderColor: '#004efc'
+          		}
+			]
+		},
+		options: {
+    		scales: {
+      			x: {
+        			display: true,
+        			title: {
+          				display: true,
+          				text: "Amounts of veTHE Sold",
+          				font: "bold",
+        				color: "#000"
+        			},
+            		/*
+            		type: 'time',
+                	time: {
+                		unit: 'day'
+                	}
+                	*/
+        		},
+        		y: {
+        			grid: {
+        				color: "rgba(0,0,0,0.1)"
+        			},
+        			//type: 'logarithmic',
+        			//min: 0.007
+        			title: {
+          				display: true,
+          				text: "Price per veTHE (in THE)",
+          				font: "bold",
+        				color: "#000"
+        			},
+        		}
+    		},
+    		interaction: {
+      			intersect: false,
+				mode: 'index'
+    		},
+    		plugins: {
+				title: {
+    				display: true,
+    				text: na,
+    				padding: {
+        				top: 10,
+        				bottom: 30
+    				},
+    				font: {
+    					size:20
+    				}
+    			},
+    			legend :{
+    				display: ld,
+    			},
+    			tooltip: {
+                	callbacks: {
+                    	label: function(context) {
+                        	let label = context.dataset.label || '';
+
+                        	if (label) {
+                            	label += ': ';
+                        	}
+                        	if (context.parsed.y !== null) {
+                            	label += fornum(context.parsed.y,0);
+                        	}
+                        	return label;
+                    	}
+                    }
+                }
+            },
+			animations: {/*
+				tension: {
+					duration: 10000,
+					easing: 'linear',
+					from: 1,
+					to: 0,
+					loop: false
+				}*/
+    		}
+    	}
+	});
+
+}
+
+
+
+
 
 async function dr() {
 	// STEP 0 : INITIALIZE
 	//cleanStage;return;
 
-	await paint_initial_quotes();
+	await paint_vethe( await quote_vethe( $("inp_vethe").value ) );
+
+	allquotes_vethe = await Promise.all([
+		quote_vethe(1e0),
+		quote_vethe(1e1),
+		quote_vethe(1e2),
+		quote_vethe(1e3),
+		quote_vethe(1e4),
+		quote_vethe(1e5),
+		quote_vethe(1e6),
+	]);
+
+	console.log(allquotes_vethe);
+
+
+	await paintall_vethe( allquotes_vethe );
+
+
+
+
+
 	return;
+
+	//////////////////////////////////////////
+	//////////////////////////////////////////
+	//////////////////////////////////////////
 
 	// STEP 1 : initialize CoinGecko Data
 
@@ -415,14 +621,10 @@ console.log(_cgd)
 		//... add others here as key=ticker & value=cgd[#]
 	};
 
-	await paint_initial_quotes();
-
-
 }
 
 
-async function paint_initial_quotes() {
-	_init_amt_vethe = $("inp_vethe").value;
+async function quote_vethe(_init_amt_vethe) {
 
 	THE = "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11";
 	WBNB = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
@@ -439,8 +641,7 @@ async function paint_initial_quotes() {
 		_ethena_minter.price(),
 		_livethe_minter.getCurrentDepositFee()
 	]);
-
-	console.log("_vethe_rd_fee",_vethe_rd_fee);
+	//console.log("_vethe_rd_fee",_vethe_rd_fee);
 
 	_vethe_rd_final = await Promise.all([
 		_thena_router.getAmountsOut(
@@ -457,13 +658,60 @@ async function paint_initial_quotes() {
 			]
 		),
 	]);
-	console.log("_vethe_rd_final",_vethe_rd_final);
+	//console.log("_vethe_rd_final", _vethe_rd_final);
 
-	$("out_vethe_ethena").innerHTML = (Number(_vethe_rd_final[0][2])/1e18).toLocaleString();
-	$("out_vethe_livethe").innerHTML = (Number(_vethe_rd_final[1][1])/1e18).toLocaleString();
+	return [
+		_vethe_rd_final[0][2] / 1e18,
+		_vethe_rd_final[1][1] / 1e18
+	];
+}
+
+
+async function paint_vethe(_amts) {
+	$("out_vethe_ethena").innerHTML = (_amts[0]).toLocaleString();
+	$("out_vethe_livethe").innerHTML = (_amts[1]).toLocaleString();
+}
+
+async function paintall_vethe(_amts) {
+	pts_ethena = "";
+	pts_livethe = "";
+	cd_s = [[],[],[]];
+	for(i=0;i< 7;i++) {
+		$("tb-vethe-ethena").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
+		$("tb-vethe-livethe").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
+
+		pts_ethena += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+		pts_livethe += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+
+		if(i< 5) cd_s[0].push({depth:(10**i).toString(), eTHENA:_amts[i][0] / 10**i, liveTHE:_amts[i][1] / 10**i});
+	}
+	//$("chart-vethe-ethena").setAttribute("points",pts_ethena);
+	//$("chart-vethe-livethe").setAttribute("points",pts_livethe);
+
+
+
+
+	paint("ch_s2", cd_s, "veTHE - Liquidity Depths", ["eTHENA", "liveTHE", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false])
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
