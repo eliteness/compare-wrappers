@@ -646,7 +646,7 @@ async function quote_ve(_init_amt_ve) {
 	//console.log("_ve_rd_fee",_ve_rd_fee);
 
 	_vr_rd_conv = [
-		_init_amt_ve * 1e18 * (1 - 0.1875) / _ve_rd_fee,
+		_init_amt_ve * 1e18 * (1 - 0.1875) / (_ve_rd_fee/1e18),
 		_init_amt_ve * 1e18 * (1 - 0.15)
 	];
 
@@ -702,15 +702,16 @@ async function paint_ve(_amts) {
 }
 
 async function paintall_ve(_amts) {
+	RUN10e = 8;
 	pts_0 = "";
 	pts_1 = "";
 	cd_s = [[],[],[]];
-	for(i=0;i< 7;i++) {
+	for(i=0;i< RUN10e+1;i++) {
 		$("tb-ve-0").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
 		$("tb-ve-1").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
-		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
-		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < RUN10e ? "," : ""}` ;
+		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < RUN10e ? "," : ""}` ;
 
 		if(i< 5) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
 	}
