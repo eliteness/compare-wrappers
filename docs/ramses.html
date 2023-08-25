@@ -705,18 +705,18 @@ async function paint_ve(_amts) {
 
 async function paintall_ve(_amts) {
 	console.log("paintall_ve(_amts)",_amts);
-	RUNS_e10 = 8;
+	_clip_chart = 10;
 	pts_0 = "";
 	pts_1 = "";
 	cd_s = [[],[],[]];
-	for(i=0; i < RUNS_e10 + 1; i++) {
+	for(i=0; i < _amts.length; i++) {
 		$("tb-ve-0").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
 		$("tb-ve-1").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
-		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < RUNS_e10 ? "," : ""}` ;
-		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < RUNS_e10 ? "," : ""}` ;
+		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
+		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
 
-		if(i< 5) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
+		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
 	}
 
 	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false]);
