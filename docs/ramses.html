@@ -584,6 +584,8 @@ async function dr() {
 		quote_ve(1e4),
 		quote_ve(1e5),
 		quote_ve(1e6),
+		quote_ve(1e7),
+		quote_ve(1e8),
 	]);
 
 	console.log(allquotes_ve);
@@ -702,11 +704,12 @@ async function paint_ve(_amts) {
 }
 
 async function paintall_ve(_amts) {
-	RUN10e = 8;
+	console.log("paintall_ve(_amts)",_amts);
+	RUN_e10 = 8;
 	pts_0 = "";
 	pts_1 = "";
 	cd_s = [[],[],[]];
-	for(i=0;i< RUN10e+1;i++) {
+	for(i=0; i < RUN_e10 + 1; i++) {
 		$("tb-ve-0").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
 		$("tb-ve-1").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
@@ -715,14 +718,8 @@ async function paintall_ve(_amts) {
 
 		if(i< 5) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
 	}
-	//$("chart-vethe-0").setAttribute("points",pts_0);
-	//$("chart-vethe-1").setAttribute("points",pts_1);
 
-
-
-
-	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false])
-
+	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false]);
 
 }
 
