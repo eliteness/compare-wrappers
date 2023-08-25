@@ -257,9 +257,9 @@ table tr td:first-child {
 						<tr>
 						<tr id="tb-ve-1">
 							<td>
-								<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
-								<a href="https://www.liquiddriver.finance/livethe" target="_blank">neadRAM</a>
-								<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Ennead</a></span>
+								<img src="https://s2.coinmarketcap.com/static/img/coins/200x200/24339.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://ennead.farm" target="_blank">neadRAM</a>
+								<br><span class="subhead-small"><a href="https://ennead.farm" target="_blank">Ennead</a></span>
 							</td>
 						</tr>
 					</tbody>
@@ -302,7 +302,7 @@ table tr td:first-child {
 				Via El Ramses : <span id="out_ve_0">?</span> RAM
 				<br>
 				<br>
-				<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
+				<img src="https://s2.coinmarketcap.com/static/img/coins/200x200/24339.png" style="vertical-align:bottom;height:24px;">
 				Via neadRAM : <span id="out_ve_1">?</span> RAM
 			</div>
 			<br>
@@ -629,12 +629,6 @@ console.log(_cgd)
 
 
 async function quote_ve(_init_amt_ve) {
-
-	THE = "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11";
-	WBNB = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-	ETHENA = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
-	LIVETHE = "0xcdc3a010a3473c0c4b2cb03d8489d6ba387b83cd";
-
 	RAM = "0xAAA6C1E32C55A7Bfa8066A6FAE9b42650F262418";
 	ELR = "0xa4A9EF80ee5D5FD8426F9861ed13E3AAD5dDd096";
 	NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1";
@@ -696,8 +690,8 @@ async function quote_ve(_init_amt_ve) {
 	_rf = await Promise.all(_d);
 
 	return [
-		_rf[0] / 1e18,
-		_rf[1] / 1e18
+		_rf[0].outAmounts / 1e18,
+		_rf[1].outAmounts / 1e18
 	];
 }
 
