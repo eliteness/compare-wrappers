@@ -137,10 +137,11 @@ table tbody tr td{
 	text-align:center;
 	min-width: 50px;
 }
-table tr th:first-child {
-	text-align:left;
-	width:150px;
-	min-width:150px;
+table tr th:first-child,
+table tr td:first-child {
+	text-align:left !important;
+	width:160px;
+	min-width:160px;
 }
 
 .view {
@@ -230,7 +231,7 @@ table tr th:first-child {
 		<div>
 			<h2>
 				<img src="https://ftm.guru/icons/the.png" style="vertical-align:bottom;height:32px;">
-				veTHE (Thena.fi)
+				veRAM (Ramses.exchange)
 			</h2>
 			<div style="overflow:auto">
 				<table align="center" id="">
@@ -247,18 +248,18 @@ table tr th:first-child {
 						</tr>
 					</thead>
 					<tbody>
-						<tr id="tb-vethe-ethena">
+						<tr id="tb-ve-0">
 							<td>
-								<img src="https://ftm.guru/icons/ethena.png" style="vertical-align:bottom;height:24px;">
-								<a href="https://eliteness.network/ethena" target="_blank">eTHENA</a>
+								<img src="https://ftm.guru/icons/elr.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://eliteness.network/ethena" target="_blank">El Ramses (ELR)</a>
 								<br><span class="subhead-small"><a href="https://eliteness.network/ethena" target="_blank">Guru Network</a></span>
 							</td>
 						<tr>
-						<tr id="tb-vethe-livethe">
+						<tr id="tb-ve-1">
 							<td>
 								<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
-								<a href="https://www.liquiddriver.finance/livethe" target="_blank">liveTHE</a>
-								<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Liquid Driver</a></span>
+								<a href="https://www.liquiddriver.finance/livethe" target="_blank">neadRAM</a>
+								<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Ennead</a></span>
 							</td>
 						</tr>
 					</tbody>
@@ -270,8 +271,8 @@ table tr th:first-child {
 
 			<svg style="display:none" version="1.0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="200px" width="80vw" viewBox="0 0 240 100" class="chart">
 
-  				<polyline id="chart-vethe-livethe" fill="none" stroke="#0074d9" stroke-width="1" points=""/>
-  				<polyline id="chart-vethe-ethena" fill="none" stroke="#ff74d9" stroke-width="1" points=""/>
+  				<polyline id="chart-ve-1" fill="none" stroke="#0074d9" stroke-width="1" points=""/>
+  				<polyline id="chart-ve-0" fill="none" stroke="#ff74d9" stroke-width="1" points=""/>
 
 				<line x1="0" x2="0" y1="0" y2="100"></line>
 				<line x1="150" x2="150" y1="0" y2="100"></line>
@@ -293,16 +294,16 @@ table tr th:first-child {
 
 			<br>
 			<br>
-			How much can <input id="inp_vethe" placeholder="Amount of veTHE" value="100" style="width:100px;font-size:1.25em"> <b>veTHE</b> be sold instantly for?
+			How much can <input id="inp_ve" placeholder="Amount of veRAM" value="100" style="width:100px;font-size:1.25em"> <b>veRAM</b> be sold instantly for?
 			<br>
 			<br>
 			<div style="font-size:1.25em">
-				<img src="https://ftm.guru/icons/ethena.png" style="vertical-align:bottom;height:24px;">
-				Via eTHENA : <span id="out_vethe_ethena">?</span> THE
+				<img src="https://ftm.guru/icons/elr.png" style="vertical-align:bottom;height:24px;">
+				Via El Ramses : <span id="out_ve_0">?</span> RAM
 				<br>
 				<br>
 				<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
-				Via liveTHE : <span id="out_vethe_livethe">?</span> THE
+				Via neadRAM : <span id="out_ve_1">?</span> RAM
 			</div>
 			<br>
 			<button onclick="dr()">Recheck</button>
@@ -474,13 +475,13 @@ function paint(el,da,na,la,hi,ld,fi) {
 			labels: da[0].map(row => row.depth.toString()),
 			datasets: [
           		{
-            		label: 'eTHENA',
-            		data: da[0].map(row => row.eTHENA),
+            		label: 'El Ramses (ELR)',
+            		data: da[0].map(row => row["El Ramses (ELR)"]),
             		borderColor: '#d700d9'
           		},
           		{
-            		label: 'liveTHE',
-            		data: da[0].map(row => row.liveTHE),
+            		label: 'neadRAM',
+            		data: da[0].map(row => row["neadRAM"]),
             		borderColor: '#004efc'
           		}
 			]
@@ -573,22 +574,22 @@ async function dr() {
 	// STEP 0 : INITIALIZE
 	//cleanStage;return;
 
-	await paint_vethe( await quote_vethe( $("inp_vethe").value ) );
+	await paint_ve( await quote_ve( $("inp_ve").value ) );
 
-	allquotes_vethe = await Promise.all([
-		quote_vethe(1e0),
-		quote_vethe(1e1),
-		quote_vethe(1e2),
-		quote_vethe(1e3),
-		quote_vethe(1e4),
-		quote_vethe(1e5),
-		quote_vethe(1e6),
+	allquotes_ve = await Promise.all([
+		quote_ve(1e0),
+		quote_ve(1e1),
+		quote_ve(1e2),
+		quote_ve(1e3),
+		quote_ve(1e4),
+		quote_ve(1e5),
+		quote_ve(1e6),
 	]);
 
-	console.log(allquotes_vethe);
+	console.log(allquotes_ve);
 
 
-	await paintall_vethe( allquotes_vethe );
+	await paintall_ve( allquotes_ve );
 
 
 
@@ -627,74 +628,105 @@ console.log(_cgd)
 }
 
 
-async function quote_vethe(_init_amt_vethe) {
+async function quote_ve(_init_amt_ve) {
 
 	THE = "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11";
 	WBNB = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
 	ETHENA = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
 	LIVETHE = "0xcdc3a010a3473c0c4b2cb03d8489d6ba387b83cd";
 
-	_ethena_minter = new ethers.Contract("0x39e3ca118ddfea3edc426b306b87f43da3251b4a",["function price() public view returns(uint256)"],BSC);
-	_livethe_minter = new ethers.Contract("0xbede24890bfeb121c38e09a3a5b532fdb04ee385",["function getCurrentDepositFee() public view returns(uint256)"],BSC);
+	RAM = "0xAAA6C1E32C55A7Bfa8066A6FAE9b42650F262418";
+	ELR = "0xa4A9EF80ee5D5FD8426F9861ed13E3AAD5dDd096";
+	NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1";
 
-	_thena_router = new ethers.Contract("0xd4ae6eca985340dd434d38f470accce4dc78d109",["function getAmountsOut(uint256,tuple(address from, address to, bool stable)[]) public view returns(uint256[])"],BSC);
+	_elr_minter = new ethers.Contract("0xcc6dc9be845fbc7a140ca472f3eae11559cab792",["function fees_veram() view returns(uint256)","function price_veram() public view returns(uint256)"],ARBITRUM);
+
+	/// Contsant Fees
+	///	elr : 18.75%
+	///	nead: 15.00%
 
 
-	_vethe_rd_fee = await Promise.all([
-		_ethena_minter.price(),
-		_livethe_minter.getCurrentDepositFee()
+	_ve_rd_fee = await Promise.all([
+		_elr_minter.price_veram(),
 	]);
-	//console.log("_vethe_rd_fee",_vethe_rd_fee);
+	//console.log("_ve_rd_fee",_ve_rd_fee);
 
-	_vethe_rd_final = await Promise.all([
-		_thena_router.getAmountsOut(
-			BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18 ),
-			[
-				{from:ETHENA, to: WBNB, stable: false},
-				{from:WBNB, to: THE, stable: false},
-			]
-		),
-		_thena_router.getAmountsOut(
-			BigInt( Number(_init_amt_vethe) * ( 1e3 - _vethe_rd_fee[1] )/1e3 * 1e18 ),
-			[
-				{from:LIVETHE, to: THE, stable: true}
-			]
-		),
+	_vr_rd_conv = [
+		_init_amt_ve * 1e18 * (1 - 0.1875) / _ve_rd_fee,
+		_init_amt_ve * 1e18 * (1 - 0.15)
+	];
+
+	_ve_rd_final = ([
+
+		fetch("https://api.odos.xyz/sor/quote/v2", {
+			method: 'POST',
+			mode: 'cors',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 0xA4B1,
+				inputTokens: [ { tokenAddress: ELR, amount: _vr_rd_conv[0].toString() } ],
+				outputTokens: [ { tokenAddress: RAM, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		}),
+
+		fetch("https://api.odos.xyz/sor/quote/v2", {
+			method: 'POST',
+			mode: 'cors',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 0xA4B1,
+				inputTokens: [ { tokenAddress: NEADRAM, amount: _vr_rd_conv[1].toString() } ],
+				outputTokens: [ { tokenAddress: RAM, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		})
+
 	]);
-	//console.log("_vethe_rd_final", _vethe_rd_final);
+	//console.log("_ve_rd_final", _ve_rd_final);
+
+	_p = await Promise.all(_ve_rd_final);
+	_d = _p.map( i => i.json() );
+	_rf = await Promise.all(_d);
 
 	return [
-		_vethe_rd_final[0][2] / 1e18,
-		_vethe_rd_final[1][1] / 1e18
+		_rf[0] / 1e18,
+		_rf[1] / 1e18
 	];
 }
 
 
-async function paint_vethe(_amts) {
-	$("out_vethe_ethena").innerHTML = (_amts[0]).toLocaleString();
-	$("out_vethe_livethe").innerHTML = (_amts[1]).toLocaleString();
+async function paint_ve(_amts) {
+	$("out_ve_0").innerHTML = (_amts[0]).toLocaleString();
+	$("out_ve_1").innerHTML = (_amts[1]).toLocaleString();
 }
 
-async function paintall_vethe(_amts) {
-	pts_ethena = "";
-	pts_livethe = "";
+async function paintall_ve(_amts) {
+	pts_0 = "";
+	pts_1 = "";
 	cd_s = [[],[],[]];
 	for(i=0;i< 7;i++) {
-		$("tb-vethe-ethena").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
-		$("tb-vethe-livethe").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
+		$("tb-ve-0").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
+		$("tb-ve-1").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
-		pts_ethena += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
-		pts_livethe += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
 
-		if(i< 5) cd_s[0].push({depth:(10**i).toString(), eTHENA:_amts[i][0] / 10**i, liveTHE:_amts[i][1] / 10**i});
+		if(i< 5) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
 	}
-	//$("chart-vethe-ethena").setAttribute("points",pts_ethena);
-	//$("chart-vethe-livethe").setAttribute("points",pts_livethe);
+	//$("chart-vethe-0").setAttribute("points",pts_0);
+	//$("chart-vethe-1").setAttribute("points",pts_1);
 
 
 
 
-	paint("ch_s2", cd_s, "veTHE - Liquidity Depths", ["eTHENA", "liveTHE", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false])
+	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false])
 
 
 }
