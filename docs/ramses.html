@@ -230,7 +230,7 @@ table tr td:first-child {
 	<div>
 		<div>
 			<h2>
-				<img src="https://ftm.guru/icons/the.png" style="vertical-align:bottom;height:32px;">
+				<img src="https://ftm.guru/icons/ramse.jpeg" style="vertical-align:bottom;height:32px;">
 				veRAM (Ramses.exchange)
 			</h2>
 			<div style="overflow:auto">
@@ -658,7 +658,7 @@ async function quote_ve(_init_amt_ve) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				chainId: 0xA4B1,
-				inputTokens: [ { tokenAddress: ELR, amount: _vr_rd_conv[0].toString() } ],
+				inputTokens: [ { tokenAddress: ELR, amount: BigInt(_vr_rd_conv[0]).toString() } ],
 				outputTokens: [ { tokenAddress: RAM, proportion: 1 } ],
 				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
 				slippageLimitPercent: 0.3,
@@ -673,7 +673,7 @@ async function quote_ve(_init_amt_ve) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				chainId: 0xA4B1,
-				inputTokens: [ { tokenAddress: NEADRAM, amount: _vr_rd_conv[1].toString() } ],
+				inputTokens: [ { tokenAddress: NEADRAM, amount: BigInt(_vr_rd_conv[1]).toString() } ],
 				outputTokens: [ { tokenAddress: RAM, proportion: 1 } ],
 				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
 				slippageLimitPercent: 0.3,
