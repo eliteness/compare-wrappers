@@ -308,7 +308,7 @@ table tr td:first-child {
 				Via neadRAM : <span id="out_ve_1">?</span> RAM
 			</div>
 			<br>
-			<button onclick="dr()">Recheck</button>
+			<button onclick="dr2()">Recheck</button>
 		</div>
 	</div>
 
@@ -572,9 +572,28 @@ function paint(el,da,na,la,hi,ld,fi) {
 
 
 
+async function dr2() {
+	await paint_ve( await quote_ve( $("inp_ve").value ) );
+}
+
 async function dr() {
 	// STEP 0 : INITIALIZE
 	//cleanStage;return;
+
+	$("tb-ve-0").innerHTML=`
+		<td>
+			<img src="https://ftm.guru/icons/elr.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://eliteness.network/el-ramses" target="_blank">El Ramses (ELR)</a>
+			<br><span class="subhead-small"><a href="https://eliteness.network" target="_blank">Guru Network</a></span>
+		</td>
+	`;
+	$("tb-ve-1").innerHTML=`
+		<td>
+			<img src="https://s2.coinmarketcap.com/static/img/coins/200x200/24339.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://ennead.farm" target="_blank">neadRAM</a>
+			<br><span class="subhead-small"><a href="https://ennead.farm" target="_blank">Ennead</a></span>
+		</td>
+	`;
 
 	await paint_ve( await quote_ve( $("inp_ve").value ) );
 

@@ -244,6 +244,8 @@ table tr th:first-child {
 							<th>10,000</th>
 							<th>100,000</th>
 							<th>1,000,000</th>
+							<th>10,000,000</th>
+							<th>100,000,000</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -567,11 +569,23 @@ function paint(el,da,na,la,hi,ld,fi) {
 
 
 
-
-
 async function dr() {
 	// STEP 0 : INITIALIZE
 	//cleanStage;return;
+	$("tb-vethe-ethena").innerHTML= `
+		<td>
+			<img src="https://ftm.guru/icons/ethena.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://eliteness.network/ethena" target="_blank">eTHENA</a>
+			<br><span class="subhead-small"><a href="https://eliteness.network/ethena" target="_blank">Guru Network</a></span>
+		</td>
+	`;
+	$("tb-vethe-livethe").innerHTML= `
+		<td>
+			<img src="https://ftm.guru/icons/livethe.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://www.liquiddriver.finance/livethe" target="_blank">liveTHE</a>
+			<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Liquid Driver</a></span>
+		</td>
+	`;
 
 	await paint_vethe( await quote_vethe( $("inp_vethe").value ) );
 
@@ -583,6 +597,8 @@ async function dr() {
 		quote_vethe(1e4),
 		quote_vethe(1e5),
 		quote_vethe(1e6),
+		quote_vethe(1e7),
+		quote_vethe(1e8),
 	]);
 
 	console.log(allquotes_vethe);
@@ -676,17 +692,20 @@ async function paint_vethe(_amts) {
 }
 
 async function paintall_vethe(_amts) {
+
+	console.log("paintall_ve(_amts)",_amts);
+	_clip_chart = 10;
 	pts_ethena = "";
 	pts_livethe = "";
 	cd_s = [[],[],[]];
-	for(i=0;i< 7;i++) {
+	for(i=0; i < _amts.length; i++) {
 		$("tb-vethe-ethena").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
 		$("tb-vethe-livethe").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
-		pts_ethena += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
-		pts_livethe += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < 6 ? "," : ""}` ;
+		pts_ethena += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
+		pts_livethe += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
 
-		if(i< 5) cd_s[0].push({depth:(10**i).toString(), eTHENA:_amts[i][0] / 10**i, liveTHE:_amts[i][1] / 10**i});
+		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), eTHENA:_amts[i][0] / 10**i, liveTHE:_amts[i][1] / 10**i});
 	}
 	//$("chart-vethe-ethena").setAttribute("points",pts_ethena);
 	//$("chart-vethe-livethe").setAttribute("points",pts_livethe);
