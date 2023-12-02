@@ -5,7 +5,7 @@
 <meta name="description" content="Measure Liquidity of Liquid Wrappers - eliteness.network/compare-wrappers : Powered by Guru Network 🦾,🚀">
 <meta name="keywords" content="Comparision, Liquidity, Liquid Wrapper, Solidly, Dex, Forks">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ftm.guru/icons/solidly.svg" />
+<link rel="shortcut icon" href="https://ftm.guru/icons/retro.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
 <style>
@@ -26,7 +26,7 @@ html{
   background-attachment: fixed;
   color:#000;
   /*text-shadow: 2px 2px 2px #000;*/
-  background-image: radial-gradient( pink, #90F7EC21);
+  background-image: radial-gradient( #32CCBCa1, #90F7EC21);
 
 }
 * {
@@ -92,16 +92,10 @@ html{
   margin:4px 4px 4px 0;
 }
 
-
 .subhead-small {
-  font-size:1em;
+  font-size:0.8em;
   color:#999;
 }
-.subhead-big {
-  font-size:1.5em;
-  color:#fff;
-}
-
 
 @media screen and (max-width: 700px){
   .box{
@@ -143,10 +137,11 @@ table tbody tr td{
 	text-align:center;
 	min-width: 50px;
 }
-table tr th:first-child {
-	text-align:left;
-	width:150px;
-	min-width:150px;
+table tr th:first-child,
+table tr td:first-child {
+	text-align:left !important;
+	width:160px;
+	min-width:160px;
 }
 
 .view {
@@ -194,46 +189,6 @@ table tr th:first-child {
   min-width: 250px;
 }
 
-.wrapper-tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-a {
-  text-decoration-line: none;
-  color: initial;
-}
-
-.wrapper-tile {
-  background: rgba(0,0,0,0.2);
-  margin: 5px;
-  padding: 20px;
-  text-align: left;
-  display: grid;
-  grid-template-columns: 50px auto;
-  border-radius: 10px;
-}
-
-.wrapper-tile img {
-  vertical-align:bottom;
-  height:48px !important;
-}
-
-.wrapper-tile div {
-  margin-left: 10px;
-}
-
-button {
-
-    background: linear-gradient(45deg, greenyellow,aqua);
-    padding: 10px;
-    color: #000;
-    font-size: 1em;
-    border-radius: 100px;
-
-}
-
-
 @media(min-width:641px) {
   /*
   table tbody tr td:first-child {
@@ -251,8 +206,7 @@ button {
 <body>
 <div class="body" align="center">
 	<h1 style="font-family:;font-size:2.5em">
-		<img height="48px" style="position: relative;vertical-align: top;" id="" src="https://ftm.guru/icons/m2.png">
-		Compare Wrappers
+		<img height="48px" style="position: relative;vertical-align: top;" id="" src="https://ftm.guru/icons/solidly.svg">  Wrapper Liquidity
 	</h1>
 	<h2>Comparision of the <span style="font-family:;color:#001337;text-shadow: 0px 0px 2px aqua;">Best Liquid Wrappers</span>!</h2>
 	<div align="center" style="font-family:;font-weight:ligher;color:#543543e3;margin-top:-5px;font-size:1.25em">eliteness.network/compare-wrappers</div>
@@ -273,134 +227,91 @@ button {
 	</div>
 
 
-	<h2>
-		<img src="https://ftm.guru/icons/the.png" style="vertical-align:bottom;height:32px;">
-		<a href="https://Thena.fi" target="_blank">Thena veTHE</a>
-	</h2>
-
-	<div class="wrapper-tiles">
-		<div class="wrapper-tile" style="background:linear-gradient(45deg, #f05,#a0f);">
-			<img src="https://ftm.guru/icons/ethena.png">
-			<div>
-				<a class="subhead-small" href="https://eliteness.network" target="_blank" style="color:white;">Guru Network's</a>
-				<br>
-				<a class="subhead-big" href="https://eliteness.network/ethena" target="_blank" style="color:white;">eTHENA</a>
+	<div>
+		<div>
+			<h2>
+				<img src="https://ftm.guru/icons/retro.svg" style="vertical-align:bottom;height:32px;">
+				veRETRO (<a href="https://https://retro.finance/liquidity" target="_blank">Retro.finance</a>)
+			</h2>
+			<div style="overflow:auto">
+				<table align="center" id="">
+					<thead>
+						<tr>
+							<th>Liquid Wrapper</th>
+							<th>1</th>
+							<th>10</th>
+							<th>100</th>
+							<th>1000</th>
+							<th>10,000</th>
+							<th>100,000</th>
+							<th>1,000,000</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="tb-ve-0">
+							<td>
+								<img src="https://ftm.guru/icons/elretro.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://eliteness.network/el-retro" target="_blank">El Retro</a>
+								<br><span class="subhead-small"><a href="https://eliteness.network/el-retro" target="_blank">Guru Network</a></span>
+							</td>
+						<tr>
+						<tr id="tb-ve-1">
+							<td>
+								<img src="https://ftm.guru/icons/liveRETRO.png" style="vertical-align:bottom;height:24px;">
+								<a href="https://www.liquiddriver.finance/liveretro" target="_blank">liveRETRO</a>
+								<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Liquid Driver</a></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</div>
+			<br>
+			<br>
+			<canvas id="ch_s2" style="width:80%;height:50vh;max-height:500px"></canvas>
 
-		<div class="wrapper-tile" style="background:linear-gradient(225deg, black,blue)">
-			<img src="https://ftm.guru/icons/livethe.png">
-			<div>
-				<a class="subhead-small" href="https://liquiddriver.finance" target="_blank" style="color:white;">Liquid Driver's</a>
+			<svg style="display:none" version="1.0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="200px" width="80vw" viewBox="0 0 240 100" class="chart">
+
+  				<polyline id="chart-ve-1" fill="none" stroke="#0074d9" stroke-width="1" points=""/>
+  				<polyline id="chart-ve-0" fill="none" stroke="#ff74d9" stroke-width="1" points=""/>
+
+				<line x1="0" x2="0" y1="0" y2="100"></line>
+				<line x1="150" x2="150" y1="0" y2="100"></line>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="25" y="90">10</text>
+				<text x="400" y="440" class="label-title">Year</text>
+
+				<text x="80" y="15">15</text>
+				<text x="80" y="131">10</text>
+				<text x="80" y="248">5</text>
+				<text x="80" y="373">0</text>
+				<text x="50" y="200" class="label-title">Price</text>
+
+
+			</svg>
+
+
+			<br>
+			<br>
+			How much can <input id="inp_ve" placeholder="Amount of veRAM" value="100" style="width:100px;font-size:1.25em"> <b>veRETRO</b> be sold instantly for?
+			<br>
+			<br>
+			<div style="font-size:1.25em">
+				<img src="https://ftm.guru/icons/elretro.png" style="vertical-align:bottom;height:24px;">
+				Via El Retro : <span id="out_ve_0">?</span> RETRO
 				<br>
-				<a class="subhead-big" href="https://www.liquiddriver.finance/livethe" target="_blank" style="color:white;">liveTHE</a>
-			</div>
-		</div>
-	</div>
-
-	<br>
-	<button onclick='window.location="thena" '> Compare all</button>
-
-
-
-	<br><br><br><br>
-
-
-
-
-
-	<h2>
-		<img src="https://ftm.guru/icons/ramses.svg" style="vertical-align:bottom;height:32px;">
-		<a href="https://ramses.exchange" target="_blank">Ramses veRAM</a>
-	</h2>
-
-	<div class="wrapper-tiles">
-		<div class="wrapper-tile" style="background:linear-gradient(225deg,  goldenrod,brown);">
-			<img src="https://ftm.guru/icons/elr.png" style="border-radius:5px">
-			<div>
-				<a class="subhead-small" href="https://eliteness.network" target="_blank" style="color:white;">Guru Network's</a>
 				<br>
-				<a class="subhead-big" href="https://eliteness.network/el-ramses" target="_blank" style="color:white;">El Ramses (ELR)</a>
+				<img src="https://ftm.guru/icons/liveRETRO.png" style="vertical-align:bottom;height:24px;">
+				Via liveRETRO : <span id="out_ve_1">?</span> RETRO
 			</div>
-		</div>
-
-		<div class="wrapper-tile" style="background:linear-gradient(225deg, black,brown)">
-			<img src="https://ftm.guru/icons/neadRAM.svg">
-			<div>
-				<a class="subhead-small" href="https://ennead.farm" target="_blank" style="color:white;">Ennead's</a>
-				<br>
-				<a class="subhead-big" href="https://ennead.farm" target="_blank" style="color:white;">neadRAM</a>
-			</div>
-		</div>
-	</div>
-
-	<br>
-	<button onclick='window.location="ramses" '> Compare all</button>
-
-
-
-	<br><br><br><br>
-
-
-
-
-
-	<h2>
-		<img src="https://ftm.guru/icons/retro.svg" style="vertical-align:bottom;height:32px;">
-		<a href="https://retro.finance" target="_blank">Retro veRETRO</a>
-	</h2>
-
-	<div class="wrapper-tiles">
-		<div class="wrapper-tile" style="background:linear-gradient(135deg,  black,gray);">
-			<img src="https://ftm.guru/icons/elretro.png" style="border-radius:5px">
-			<div>
-				<a class="subhead-small" href="https://eliteness.network" target="_blank" style="color:white;">Guru Network's</a>
-				<br>
-				<a class="subhead-big" href="https://eliteness.network/el-ramses" target="_blank" style="color:white;">El Retro</a>
-			</div>
-		</div>
-
-		<div class="wrapper-tile" style="background:linear-gradient(135deg, black,blue)">
-			<img src="https://ftm.guru/icons/liveRETRO.png">
-			<div>
-				<a class="subhead-small" href="https://liquiddriver.finance" target="_blank" style="color:white;">Liquid Driver's</a>
-				<br>
-				<a class="subhead-big" href="https://www.liquiddriver.finance/liveretro" target="_blank" style="color:white;">liveRETRO</a>
-			</div>
+			<br>
+			<button onclick="dr2()">Recheck</button>
 		</div>
 	</div>
 
-	<br>
-	<button onclick='window.location="retro" '> Compare all</button>
 
 
-
-
-	<br><br><br><br>
-
-
-
-
-
-	<h2>
-		<img src="https://ftm.guru/icons/chr.png" style="vertical-align:bottom;height:32px;">
-		<a href="https://ramses.exchange" target="_blank">Chronos veCHR</a>
-	</h2>
-
-	<div class="wrapper-tiles">
-		<div class="wrapper-tile" style="background:linear-gradient(225deg,  #356ff4,purple);">
-			<img src="https://ftm.guru/icons/64.png" style="border-radius:5px">
-			<div>
-				<a class="subhead-small" href="https://eliteness.network" target="_blank" style="color:white;">Guru Network's</a>
-				<br>
-				<a class="subhead-big" href="https://eliteness.network/el-chronos" target="_blank" style="color:white;">El Chronos (elCHR)</a>
-			</div>
-		</div>
-
-	</div>
-
-	<br>
-	<button onclick='window.location="thena" '> Compare all</button>
 
 
 </div>
@@ -428,7 +339,7 @@ Are we missing something interesting? Jump into our <a href="https://discord.gg/
 </div>
 <br><br>
 <div align="right">
-<a href="https://ftm.guru" style="color:#555;text-shadow:none;text-decoration:none;font-weight:bolder">Powered by Guru Network, CoinGecko, DefiLlama & various public blockchains & their valuable node service providers. 🦾</a>
+<a href="https://ftm.guru" style="color:#555;text-shadow:none;text-decoration:none;font-weight:bolder">Powered by Guru Network, Odos.xyz, CoinGecko, DefiLlama & various public blockchains & their valuable node service providers. 🦾</a>
 </div>
 </body>
 
@@ -466,11 +377,10 @@ async function basetrip() {
 	ETHEREUM = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/eth");
 	OPTIMISM = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/optimism");
 	FANTOM = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/fantom");
+	MATIC = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/polygon");
 	BSC = new ethers.providers.JsonRpcProvider("https://rpc.ankr.com/bsc");
 	ARBITRUM = new ethers.providers.JsonRpcProvider("https://arbitrum.blockpi.network/v1/rpc/public");
 	KAVA = new ethers.providers.JsonRpcProvider("https://evm.kava.io");
-
-	return;
 
 	cleanStage();
 
@@ -566,13 +476,13 @@ function paint(el,da,na,la,hi,ld,fi) {
 			labels: da[0].map(row => row.depth.toString()),
 			datasets: [
           		{
-            		label: 'eTHENA',
-            		data: da[0].map(row => row.eTHENA),
+            		label: 'El Ramses (ELR)',
+            		data: da[0].map(row => row["El Ramses (ELR)"]),
             		borderColor: '#d700d9'
           		},
           		{
-            		label: 'liveTHE',
-            		data: da[0].map(row => row.liveTHE),
+            		label: 'neadRAM',
+            		data: da[0].map(row => row["neadRAM"]),
             		borderColor: '#004efc'
           		}
 			]
@@ -583,7 +493,7 @@ function paint(el,da,na,la,hi,ld,fi) {
         			display: true,
         			title: {
           				display: true,
-          				text: "Amounts of veTHE Sold",
+          				text: "Amounts of veRAM Sold",
           				font: "bold",
         				color: "#000"
         			},
@@ -602,7 +512,7 @@ function paint(el,da,na,la,hi,ld,fi) {
         			//min: 0.007
         			title: {
           				display: true,
-          				text: "Price per veTHE (in THE)",
+          				text: "Price per veRAM (in RAM)",
           				font: "bold",
         				color: "#000"
         			},
@@ -658,33 +568,50 @@ function paint(el,da,na,la,hi,ld,fi) {
 }
 
 
+
+
+
 async function dr2() {
 	await paint_ve( await quote_ve( $("inp_ve").value ) );
 }
-
 
 async function dr() {
 	// STEP 0 : INITIALIZE
 	//cleanStage;return;
 
-	await paint_vethe( await quote_vethe( $("inp_vethe").value ) );
+	$("tb-ve-0").innerHTML=`
+		<td>
+			<img src="https://ftm.guru/icons/elretro.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://eliteness.network/el-retro" target="_blank">El Retro</a>
+			<br><span class="subhead-small"><a href="https://eliteness.network/el-retro" target="_blank">Guru Network</a></span>
+		</td>
+	`;
+	$("tb-ve-1").innerHTML=`
+		<td>
+			<img src="https://ftm.guru/icons/liveRETRO.png" style="vertical-align:bottom;height:24px;">
+			<a href="https://www.liquiddriver.finance/liveretro" target="_blank">liveRETRO</a>
+			<br><span class="subhead-small"><a href="https://liquiddriver.finance" target="_blank">Liquid Driver</a></span>
+		</td>
+	`;
 
-	allquotes_vethe = await Promise.all([
-		quote_vethe(1e0),
-		quote_vethe(1e1),
-		quote_vethe(1e2),
-		quote_vethe(1e3),
-		quote_vethe(1e4),
-		quote_vethe(1e5),
-		quote_vethe(1e6),
-		quote_vethe(1e7),
-		quote_vethe(1e8),
+	await paint_ve( await quote_ve( $("inp_ve").value ) );
+
+	allquotes_ve = await Promise.all([
+		quote_ve(1e0),
+		quote_ve(1e1),
+		quote_ve(1e2),
+		quote_ve(1e3),
+		quote_ve(1e4),
+		quote_ve(1e5),
+		quote_ve(1e6),
+		//quote_ve(1e7),
+		//quote_ve(1e8),
 	]);
 
-	console.log(allquotes_vethe);
+	console.log(allquotes_ve);
 
 
-	await paintall_vethe( allquotes_vethe );
+	await paintall_ve( allquotes_ve );
 
 
 
@@ -723,78 +650,114 @@ console.log(_cgd)
 }
 
 
-async function quote_vethe(_init_amt_vethe) {
+async function quote_ve(_init_amt_ve) {
 
-	THE = "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11";
-	WBNB = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-	ETHENA = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
-	LIVETHE = "0xcdc3a010a3473c0c4b2cb03d8489d6ba387b83cd";
+/*
+	RAM = "0xAAA6C1E32C55A7Bfa8066A6FAE9b42650F262418";
+	ELR = "0xa4A9EF80ee5D5FD8426F9861ed13E3AAD5dDd096";
+	NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1";
 
-	_ethena_minter = new ethers.Contract("0x39e3ca118ddfea3edc426b306b87f43da3251b4a",["function price() public view returns(uint256)"],BSC);
-	_livethe_minter = new ethers.Contract("0xbede24890bfeb121c38e09a3a5b532fdb04ee385",["function getCurrentDepositFee() public view returns(uint256)"],BSC);
+	_elr_minter = new ethers.Contract("0xcc6dc9be845fbc7a140ca472f3eae11559cab792",["function fees_veram() view returns(uint256)","function price_veram() public view returns(uint256)"],ARBITRUM);
 
-	_thena_router = new ethers.Contract("0xd4ae6eca985340dd434d38f470accce4dc78d109",["function getAmountsOut(uint256,tuple(address from, address to, bool stable)[]) public view returns(uint256[])"],BSC);
+	/// Contsant Fees
+	///	elr : 18.75%
+	///	nead: 15.00%
 
 
-	_vethe_rd_fee = await Promise.all([
-		_ethena_minter.price(),
-		_livethe_minter.getCurrentDepositFee()
+	_ve_rd_fee = await Promise.all([
+		_elr_minter.price_veram(),
 	]);
-	//console.log("_vethe_rd_fee",_vethe_rd_fee);
+	//console.log("_ve_rd_fee",_ve_rd_fee);
+*/
 
-	_vethe_rd_final = await Promise.all([
-		_thena_router.getAmountsOut(
-			BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18 ),
-			[
-				{from:ETHENA, to: WBNB, stable: false},
-				{from:WBNB, to: THE, stable: false},
-			]
-		),
-		_thena_router.getAmountsOut(
-			BigInt( Number(_init_amt_vethe) * ( 1e3 - _vethe_rd_fee[1] )/1e3 * 1e18 ),
-			[
-				{from:LIVETHE, to: THE, stable: true}
-			]
-		),
+
+
+	RETRO = "0xbfa35599c7aebb0dace9b5aa3ca5f2a79624d8eb";
+	ELRETRO = "0xfab311fe3e3be4bb3fed77257ee294fb22fa888b";
+	LIVERETRO = "0xCaAF554900E33ae5DBc66ae9f8ADc3049B7D31dB";
+
+	_el_minter = new ethers.Contract("0xCC835D13543CEC819AC0226Dd9Ff35b6312b8FCa",["function price() public view returns(uint256)"],MATIC);
+	_live_minter = new ethers.Contract("0x09BB4d55Df77492F4c6fB213c874e0AC6f6A2AE5",["function getCurrentDepositFee() public view returns(uint256)"],MATIC);
+
+	_mint_prices = await Promise.all([
+		_el_minter.price(),
+		_live_minter.getCurrentDepositFee()
+	])
+
+
+	_vr_rd_conv = [
+		_init_amt_ve * 1e18 / ( _mint_prices[0]/1e18 ),
+		_init_amt_ve * 1e18 * ( 1000 - _mint_prices[1]) / 100
+	];
+
+	_ve_rd_final = ([
+
+		fetch("https://api.odos.xyz/sor/quote/v2", {
+			method: 'POST',
+			mode: 'cors',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 137,
+				inputTokens: [ { tokenAddress: ELRETRO, amount: BigInt(_vr_rd_conv[0]).toString() } ],
+				outputTokens: [ { tokenAddress: RETRO, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		}),
+
+		fetch("https://api.odos.xyz/sor/quote/v2", {
+			method: 'POST',
+			mode: 'cors',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 137,
+				inputTokens: [ { tokenAddress: LIVERETRO, amount: BigInt(_vr_rd_conv[1]).toString() } ],
+				outputTokens: [ { tokenAddress: RETRO, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		})
+
 	]);
-	//console.log("_vethe_rd_final", _vethe_rd_final);
+	//console.log("_ve_rd_final", _ve_rd_final);
+
+	_p = await Promise.all(_ve_rd_final);
+	_d = _p.map( i => i.json() );
+	_rf = await Promise.all(_d);
 
 	return [
-		_vethe_rd_final[0][2] / 1e18,
-		_vethe_rd_final[1][1] / 1e18
+		_rf[0].outAmounts / 1e18,
+		_rf[1].outAmounts / 1e18
 	];
 }
 
 
-async function paint_vethe(_amts) {
-	$("out_vethe_ethena").innerHTML = (_amts[0]).toLocaleString();
-	$("out_vethe_livethe").innerHTML = (_amts[1]).toLocaleString();
+async function paint_ve(_amts) {
+	$("out_ve_0").innerHTML = (_amts[0]).toLocaleString();
+	$("out_ve_1").innerHTML = (_amts[1]).toLocaleString();
 }
 
-async function paintall_vethe(_amts) {
-
+async function paintall_ve(_amts) {
 	console.log("paintall_ve(_amts)",_amts);
 	_clip_chart = 10;
-	pts_ethena = "";
-	pts_livethe = "";
+	pts_0 = "";
+	pts_1 = "";
 	cd_s = [[],[],[]];
 	for(i=0; i < _amts.length; i++) {
-		$("tb-vethe-ethena").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
-		$("tb-vethe-livethe").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
+		$("tb-ve-0").innerHTML += `<td>${(_amts[i][0]).toFixed(i-2>0?0:3-i)}</td>`;
+		$("tb-ve-1").innerHTML += `<td>${(_amts[i][1]).toFixed(i-2>0?0:3-i)}</td>`;
 
-		pts_ethena += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
-		pts_livethe += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
+		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
+		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
 
-		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), eTHENA:_amts[i][0] / 10**i, liveTHE:_amts[i][1] / 10**i});
+		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
 	}
-	//$("chart-vethe-ethena").setAttribute("points",pts_ethena);
-	//$("chart-vethe-livethe").setAttribute("points",pts_livethe);
 
-
-
-
-	paint("ch_s2", cd_s, "veTHE - Liquidity Depths", ["eTHENA", "liveTHE", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false])
-
+	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false]);
 
 }
 
