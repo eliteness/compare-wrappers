@@ -476,13 +476,13 @@ function paint(el,da,na,la,hi,ld,fi) {
 			labels: da[0].map(row => row.depth.toString()),
 			datasets: [
           		{
-            		label: 'El Ramses (ELR)',
-            		data: da[0].map(row => row["El Ramses (ELR)"]),
+            		label: 'El Retro',
+            		data: da[0].map(row => row["elRETRO"]),
             		borderColor: '#d700d9'
           		},
           		{
-            		label: 'neadRAM',
-            		data: da[0].map(row => row["neadRAM"]),
+            		label: 'liveRETRO',
+            		data: da[0].map(row => row["liveRETRO"]),
             		borderColor: '#004efc'
           		}
 			]
@@ -687,7 +687,7 @@ async function quote_ve(_init_amt_ve) {
 
 	_vr_rd_conv = [
 		_init_amt_ve * 1e18 / ( _mint_prices[0]/1e18 ),
-		_init_amt_ve * 1e18 * ( 1000 - _mint_prices[1]) / 100
+		_init_amt_ve * 1e18 * ( 1000 - _mint_prices[1]) / 1000
 	];
 
 	_ve_rd_final = ([
@@ -754,10 +754,10 @@ async function paintall_ve(_amts) {
 		pts_0 += `${ i*40 } ${ 100 - _amts[i][0] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
 		pts_1 += `${ i*40 } ${ 100 - _amts[i][1] / 10**i * 100 } ${ i < _amts.length-1 ? "," : ""}` ;
 
-		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), "El Ramses (ELR)":_amts[i][0] / 10**i, "neadRAM":_amts[i][1] / 10**i});
+		if(i < _clip_chart) cd_s[0].push({depth:(10**i).toString(), "elRETRO":_amts[i][0] / 10**i, "liveRETRO":_amts[i][1] / 10**i});
 	}
 
-	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Ramses", "neadRAM", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false]);
+	paint("ch_s2", cd_s, "veRAM - Liquidity Depths", ["El Retro", "liveRETRO", ], [0,0,1], 1, [{t:'origin',a:'rgba(257, 127, 227,0)'},{t:'origin',a:'rgba(0, 155, 255,0)'},false]);
 
 }
 
