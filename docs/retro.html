@@ -676,7 +676,7 @@ async function quote_ve(_init_amt_ve) {
 	ELRETRO = "0xfab311fe3e3be4bb3fed77257ee294fb22fa888b";
 	LIVERETRO = "0xCaAF554900E33ae5DBc66ae9f8ADc3049B7D31dB";
 
-	_el_minter = new ethers.Contract("0xCC835D13543CEC819AC0226Dd9Ff35b6312b8FCa",["function price() public view returns(uint256)"],MATIC);
+	_el_minter = new ethers.Contract("0xEaBFc7F90Bb21649018403a234d8388c99EF1cE7",["function price() public view returns(uint256)"],MATIC);
 	_live_minter = new ethers.Contract("0x09BB4d55Df77492F4c6fB213c874e0AC6f6A2AE5",["function getCurrentDepositFee() public view returns(uint256)"],MATIC);
 
 	_mint_prices = await Promise.all([

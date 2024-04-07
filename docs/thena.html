@@ -650,7 +650,7 @@ async function quote_vethe(_init_amt_vethe) {
 	ETHENA = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
 	LIVETHE = "0xcdc3a010a3473c0c4b2cb03d8489d6ba387b83cd";
 
-	_ethena_minter = new ethers.Contract("0x39e3ca118ddfea3edc426b306b87f43da3251b4a",["function price() public view returns(uint256)"],BSC);
+	_ethena_minter = new ethers.Contract("0xcba004cea7126d3ba1a09db26cbb8f4444a1b14c",["function price() public view returns(uint256)"],BSC);
 	_livethe_minter = new ethers.Contract("0xbede24890bfeb121c38e09a3a5b532fdb04ee385",["function getCurrentDepositFee() public view returns(uint256)"],BSC);
 
 	_thena_router = new ethers.Contract("0xd4ae6eca985340dd434d38f470accce4dc78d109",["function getAmountsOut(uint256,tuple(address from, address to, bool stable)[]) public view returns(uint256[])"],BSC);
@@ -662,14 +662,34 @@ async function quote_vethe(_init_amt_vethe) {
 	]);
 	//console.log("_vethe_rd_fee",_vethe_rd_fee);
 
+	_vethe_ethena2the = fetch(
+		"https://api.odos.xyz/sor/quote/v2",
+		{
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				chainId: 56,
+				inputTokens: [ { tokenAddress: ETHENA, amount: BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18 ).toString() } ],
+				outputTokens: [ { tokenAddress: THE, proportion: 1 } ],
+				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
+				slippageLimitPercent: 0.3,
+				referralCode: 0,
+				compact: true,
+			}),
+		}
+	);
+
 	_vethe_rd_final = await Promise.all([
+		/*
 		_thena_router.getAmountsOut(
-			BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18 ),
+			BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] ) * 1e18 ),
 			[
 				{from:ETHENA, to: WBNB, stable: false},
 				{from:WBNB, to: THE, stable: false},
 			]
-		),
+		)
+		*/
+		_vethe_ethena2the,
 		_thena_router.getAmountsOut(
 			BigInt( Number(_init_amt_vethe) * ( 1e3 - _vethe_rd_fee[1] )/1e3 * 1e18 ),
 			[
@@ -679,8 +699,10 @@ async function quote_vethe(_init_amt_vethe) {
 	]);
 	//console.log("_vethe_rd_final", _vethe_rd_final);
 
+	_vethe_rd_final[0] = await _vethe_rd_final[0].json();
+
 	return [
-		_vethe_rd_final[0][2] / 1e18,
+		Number(_vethe_rd_final[0].outAmounts[0]) / 1e18,
 		_vethe_rd_final[1][1] / 1e18
 	];
 }
