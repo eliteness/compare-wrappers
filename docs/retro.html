@@ -688,7 +688,7 @@ async function quote_ve(_init_amt_ve) {
 	_vr_rd_conv = [
 		_init_amt_ve * 1e18 / ( _mint_prices[0]/1e18 ),
 		_init_amt_ve * 1e18 * ( 1000 - _mint_prices[1]) / 1000
-	];
+	].map(u=>Math.floor(u));
 
 	_ve_rd_final = ([
 

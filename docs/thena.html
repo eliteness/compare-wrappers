@@ -669,7 +669,7 @@ async function quote_vethe(_init_amt_vethe) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				chainId: 56,
-				inputTokens: [ { tokenAddress: ETHENA, amount: BigInt( Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18 ).toString() } ],
+				inputTokens: [ { tokenAddress: ETHENA, amount: BigInt( Math.floor(Number(_init_amt_vethe) * 1e18 / ( _vethe_rd_fee[0] * 1e4 ) * 1e18) ).toString() } ],
 				outputTokens: [ { tokenAddress: THE, proportion: 1 } ],
 				userAddr: '0x167D87A906dA361A10061fe42bbe89451c2EE584',
 				slippageLimitPercent: 0.3,
