@@ -233,6 +233,7 @@ table tr td:first-child {
 				<img src="https://ftm.guru/icons/ramses.jpeg" style="vertical-align:bottom;height:32px;">
 				veRAM (<a href="https://Ramses.exchange" target="_blank">Ramses.exchange</a>)
 			</h2>
+			<p id="loading">Loading quotes... please wait!</p>
 			<div style="overflow:auto">
 				<table align="center" id="">
 					<thead>
@@ -296,7 +297,7 @@ table tr td:first-child {
 
 			<br>
 			<br>
-			How much can <input id="inp_ve" placeholder="Amount of veRAM" value="100" style="width:100px;font-size:1.25em"> <b>veRAM</b> be sold instantly for?
+			How much can <input id="inp_ve" placeholder="Amount of veRAM" value="10000" style="width:100px;font-size:1.25em"> <b>veRAM</b> be sold instantly for?
 			<br>
 			<br>
 			<div style="font-size:1.25em">
@@ -597,17 +598,17 @@ async function dr() {
 
 	await paint_ve( await quote_ve( $("inp_ve").value ) );
 
-	allquotes_ve = await Promise.all([
-		quote_ve(1e0),
-		quote_ve(1e1),
-		quote_ve(1e2),
-		quote_ve(1e3),
-		quote_ve(1e4),
-		quote_ve(1e5),
-		quote_ve(1e6),
-		quote_ve(1e7),
-		quote_ve(1e8),
-	]);
+	allquotes_ve = [//await Promise.all([
+		await quote_ve(1e0),
+		await quote_ve(1e1),
+		await quote_ve(1e2),
+		await quote_ve(1e3),
+		await quote_ve(1e4),
+		await quote_ve(1e5),
+		await quote_ve(1e6),
+		await quote_ve(1e7),
+		await quote_ve(1e8),
+	]//);
 
 	console.log(allquotes_ve);
 
@@ -652,9 +653,12 @@ console.log(_cgd)
 
 
 async function quote_ve(_init_amt_ve) {
+	console.log("quoting", _init_amt_ve);
+	$("loading").innerHTML = `Loading quote for ${_init_amt_ve.toLocaleString()} veRAM...`
 	RAM = "0xAAA6C1E32C55A7Bfa8066A6FAE9b42650F262418";
 	ELR = "0xa4A9EF80ee5D5FD8426F9861ed13E3AAD5dDd096";
-	NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1";
+	NEADRAM = "0x9EfCFc5b49390FC3fb9B58607D2e89445Bb380BF";//abcRAM;
+	//NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1"; //original
 
 	_elr_minter = new ethers.Contract("0xcc6dc9be845fbc7a140ca472f3eae11559cab792",["function fees_veram() view returns(uint256)","function price_veram() public view returns(uint256)"],ARBITRUM);
 

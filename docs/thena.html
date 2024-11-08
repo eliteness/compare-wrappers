@@ -232,6 +232,7 @@ table tr th:first-child {
 				<img src="https://ftm.guru/icons/the.png" style="vertical-align:bottom;height:32px;">
 				veTHE (Thena.fi)
 			</h2>
+			<p id="loading">Loading quotes... please wait!</p>
 			<div style="overflow:auto">
 				<table align="center" id="">
 					<thead>
@@ -589,19 +590,20 @@ async function dr() {
 
 	await paint_vethe( await quote_vethe( $("inp_vethe").value ) );
 
-	allquotes_vethe = await Promise.all([
-		quote_vethe(1e0),
-		quote_vethe(1e1),
-		quote_vethe(1e2),
-		quote_vethe(1e3),
-		quote_vethe(1e4),
-		quote_vethe(1e5),
-		quote_vethe(1e6),
-		quote_vethe(1e7),
-		quote_vethe(1e8),
-	]);
+	allquotes_vethe = [//await Promise.all([
+		await quote_vethe(1e0),
+		await quote_vethe(1e1),
+		await quote_vethe(1e2),
+		await quote_vethe(1e3),
+		await quote_vethe(1e4),
+		await quote_vethe(1e5),
+		await quote_vethe(1e6),
+		await quote_vethe(1e7),
+		await quote_vethe(1e8),
+	]//);
 
 	console.log(allquotes_vethe);
+	$("loading").innerHTML = ""
 
 
 	await paintall_vethe( allquotes_vethe );
@@ -644,7 +646,8 @@ console.log(_cgd)
 
 
 async function quote_vethe(_init_amt_vethe) {
-
+	console.log("quoting", _init_amt_vethe);
+	$("loading").innerHTML = `Loading quote for ${_init_amt_vethe.toLocaleString()} veTHE...`
 	THE = "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11";
 	WBNB = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
 	ETHENA = "0xafbe3b8b0939a5538de32f7752a78e08c8492295";
