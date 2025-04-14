@@ -240,13 +240,13 @@ table tr td:first-child {
 						<tr>
 							<th>Liquid Wrapper</th>
 							<th>1</th>
-							<th>10</th>
+							<!--<th>10</th>-->
 							<th>100</th>
-							<th>1000</th>
+							<!--<th>1000</th>-->
 							<th>10,000</th>
-							<th>100,000</th>
+							<!--<th>100,000</th>-->
 							<th>1,000,000</th>
-							<th>10,000,000</th>
+							<!--<th>10,000,000</th>-->
 							<th>100,000,000</th>
 						</tr>
 					</thead>
@@ -600,13 +600,13 @@ async function dr() {
 
 	allquotes_ve = [//await Promise.all([
 		await quote_ve(1e0),
-		await quote_ve(1e1),
+		//await quote_ve(1e1),
 		await quote_ve(1e2),
-		await quote_ve(1e3),
+		//await quote_ve(1e3),
 		await quote_ve(1e4),
-		await quote_ve(1e5),
+		//await quote_ve(1e5),
 		await quote_ve(1e6),
-		await quote_ve(1e7),
+		//await quote_ve(1e7),
 		await quote_ve(1e8),
 	]//);
 
@@ -660,22 +660,32 @@ async function quote_ve(_init_amt_ve) {
 	NEADRAM = "0x9EfCFc5b49390FC3fb9B58607D2e89445Bb380BF";//abcRAM;
 	//NEADRAM = "0x40301951Af3f80b8C1744ca77E55111dd3c1dba1"; //original
 
-	_elr_minter = new ethers.Contract("0xcc6dc9be845fbc7a140ca472f3eae11559cab792",["function fees_veram() view returns(uint256)","function price_veram() public view returns(uint256)"],ARBITRUM);
+	//_elr_minter = new ethers.Contract("0xcc6dc9be845fbc7a140ca472f3eae11559cab792",["function fees_veram() view returns(uint256)","function price_veram() public view returns(uint256)"],ARBITRUM);
+	_elr_minter = new ethers.Contract("0x88bB27FB45ab4C20aE5Be83aB302f5935543d8cc",["function price() public view returns(uint256)"],ARBITRUM);
+
+	_livethe_minter = new ethers.Contract("0xE4AB074445597f51616472d6fBF1aB53bEFf3c69",["function getCurrentDepositFee() public view returns(uint256)"],ARBITRUM);
 
 	/// Contsant Fees
 	///	elr : 18.75%
 	///	nead: 15.00%
 
 
-	_ve_rd_fee = await Promise.all([
-		_elr_minter.price_veram(),
+
+
+	_vethe_rd_fee = await Promise.all([
+		_elr_minter.price(),
+		_livethe_minter.getCurrentDepositFee()
 	]);
 	//console.log("_ve_rd_fee",_ve_rd_fee);
+	//_vr_rd_conv = [
+	//	_init_amt_ve * 1e18 * (1 - 0.1875) / (_ve_rd_fee/1e18),
+	//	_init_amt_ve * 1e18 * (1 - 0.15)
+	//];
 
 	_vr_rd_conv = [
-		_init_amt_ve * 1e18 * (1 - 0.1875) / (_ve_rd_fee/1e18),
-		_init_amt_ve * 1e18 * (1 - 0.15)
-	];
+		BigInt( Math.floor(Number(_init_amt_ve) * 1e18 / ( _vethe_rd_fee[0] ) * 1e18) ).toString(),
+		BigInt( Number(_init_amt_ve) * ( 1e3 - _vethe_rd_fee[1] )/1e3 * 1e18 )
+	]
 
 	_ve_rd_final = ([
 
